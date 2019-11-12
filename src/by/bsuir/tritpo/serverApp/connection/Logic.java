@@ -19,9 +19,10 @@ public class Logic {
     private String login = "";
     private Socket socket;
 
-    public Logic(Socket socket) throws IOException {
+    public Logic(Socket socket) throws IOException, SQLException, ClassNotFoundException {
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         this.socket = socket;
+        service.getInstance();
     }
 
     public void processCommand(String message) throws SQLException, IOException {
@@ -63,6 +64,9 @@ public class Logic {
             case "exit":
                 socket.close();
                 out.close();
+                break;
+            case "onlineUsers":
+                //out.write();
         }
     }
 
