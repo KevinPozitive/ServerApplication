@@ -60,19 +60,22 @@ public class Logic {
                 }
                 break;
             case "msgHistory":
-                out.write(messageStory.toString());break;
+                out.write(service.getMessages().toString());
+                break;
             case "exit":
                 socket.close();
                 out.close();
                 break;
             case "onlineUsers":
-                //out.write();
+                for(User user: service.getUsers())
+                    out.write(user.getUsername()+"~");
+                break;
         }
     }
 
     private void send(String message){
         try {
-            out.write(message+"\n");
+            out.write(login + "~" + message +"\n");
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();

@@ -5,6 +5,7 @@ import by.bsuir.tritpo.serverApp.connection.configs.Configs;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class Server {
@@ -18,11 +19,17 @@ public class Server {
                 try {
                     serverList.add(new ServerConnect(socket));
                 }catch (IOException e){
-                    socket.close();
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
         } finally {
-          serverSocket.close();
+
+            serverSocket.close();
+            System.out.println("Error");
         }
     }
 }

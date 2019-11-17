@@ -1,5 +1,6 @@
 package by.bsuir.tritpo.serverApp.service;
 
+import by.bsuir.tritpo.serverApp.Message;
 import by.bsuir.tritpo.serverApp.User;
 
 import java.sql.SQLException;
@@ -11,6 +12,6 @@ public interface IChatService {
     boolean checkUser(String name, String password) throws SQLException;
     boolean isLoginReserved(String name) throws SQLException;
     ArrayList<User> getUsers() throws SQLException;
-    LinkedList<String> getMessages();
-    String getLastMsg();
+    LinkedList<Message> getMessages();
+   // String getLastMsg();
 }

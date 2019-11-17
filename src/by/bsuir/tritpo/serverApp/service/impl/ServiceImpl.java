@@ -16,6 +16,18 @@ public class ServiceImpl implements IChatService {
     private UsersDAO userDAO = new UserDAOImpl();
     private MessageStory msgStory = new MessageStory();
 
+    public static ServiceImpl getInstance() throws SQLException, ClassNotFoundException {
+        if(instance==null){
+            synchronized (ServiceImpl.class){
+                if(instance==null){
+                    instance = new ServiceImpl();
+                }
+            }
+        }
+        return instance;
+    }
+
+
     private ServiceImpl() throws SQLException, ClassNotFoundException {
     }
 
@@ -48,15 +60,10 @@ public class ServiceImpl implements IChatService {
         ArrayList<User> users = userDAO.getAll();
         return users;
     }
-    public static ServiceImpl getInstance() throws SQLException, ClassNotFoundException {
-        if(instance==null){
-            synchronized (ServiceImpl.class){
-                if(instance==null){
-                    instance = new ServiceImpl();
-                }
-            }
-        }
-        return instance;
+
+    @Override
+    public LinkedList<Message> getMessages() {
+        return msgStory.getStory();
     }
 
 }
