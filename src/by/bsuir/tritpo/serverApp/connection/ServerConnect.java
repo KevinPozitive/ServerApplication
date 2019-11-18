@@ -12,7 +12,6 @@ public class ServerConnect extends Thread{
         logic = new Logic(socket);
         this.socket = socket;
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
         start();
     }
 
@@ -22,11 +21,11 @@ public class ServerConnect extends Thread{
         try {
             while (true){
                 message = in.readLine();
+                System.out.println(message);
 //                if(message == "stop"){
 //                    break;
 //                }
                 logic.processCommand(message);
-
             }
         } catch (IOException e) {
             e.printStackTrace();

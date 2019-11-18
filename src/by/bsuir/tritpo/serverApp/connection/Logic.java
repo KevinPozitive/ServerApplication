@@ -22,24 +22,30 @@ public class Logic {
     public Logic(Socket socket) throws IOException, SQLException, ClassNotFoundException {
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         this.socket = socket;
-        service.getInstance();
+        service = new ServiceImpl();
     }
 
     public void processCommand(String message) throws SQLException, IOException {
         String[] msg = message.split("~");
+        for(String msgUnit: msg){
+            System.out.println(msgUnit);
+        }
         switch (msg[0]){
             case "msg":
                 for(ServerConnect serverConnect:Server.serverList){
                     send(msg[1]);
                     Message messageUnit = new Message(login,msg[1]);
                     messageStory.addStoryMsg(messageUnit);
+                    System.out.println(msg[1]);
                 }
                 break;
             case "log":
+                System.out.println(msg[1]+"}{"+msg[2]);
                 if(service.checkUser(msg[1],msg[2])==false) {
                     out.write("true\n");
                     out.flush();
                     login = msg[1];
+                    System.out.println("con");
                 }
                 else {
                     out.write("false\n");

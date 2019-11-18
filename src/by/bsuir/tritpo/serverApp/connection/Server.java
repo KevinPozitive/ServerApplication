@@ -15,6 +15,7 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(Configs.PORT);
         try {
             while (true){
+                System.out.println("Server Started");
                 Socket socket = serverSocket.accept();
                 try {
                     serverList.add(new ServerConnect(socket));

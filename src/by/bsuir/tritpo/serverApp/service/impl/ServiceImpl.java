@@ -12,23 +12,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ServiceImpl implements IChatService {
-    private static volatile ServiceImpl instance;
     private UsersDAO userDAO = new UserDAOImpl();
     private MessageStory msgStory = new MessageStory();
 
-    public static ServiceImpl getInstance() throws SQLException, ClassNotFoundException {
-        if(instance==null){
-            synchronized (ServiceImpl.class){
-                if(instance==null){
-                    instance = new ServiceImpl();
-                }
-            }
-        }
-        return instance;
-    }
-
-
-    private ServiceImpl() throws SQLException, ClassNotFoundException {
+    public ServiceImpl() throws SQLException, ClassNotFoundException {
     }
 
 

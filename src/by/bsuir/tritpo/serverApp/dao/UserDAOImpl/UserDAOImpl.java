@@ -20,10 +20,11 @@ public class UserDAOImpl implements UsersDAO {
 
     @Override
     public boolean add(User user) throws SQLException{
-        String sql="INSERT INTO users VALUES (?,?)";
+        String sql="INSERT INTO users ( nickname, password ) VALUES (?,?)";
         stm=connection.prepareStatement(sql);
-        stm.setObject(1,user.getUsername());
-        stm.setObject(2,user.getPassword());
+        stm.setString(1,user.getUsername());
+        stm.setString(2,user.getPassword());
+        stm.addBatch();
         return stm.executeUpdate()>0;
     }
     @Override
@@ -51,9 +52,14 @@ public class UserDAOImpl implements UsersDAO {
 
     @Override
     public User getUser(String name) throws SQLException {
-        String sql="SELECT * FROM users WHERE username="+name;
+        String sql="SELECT * FROM users WHERE nickname = '"+ name+"'";
+        System.out.println(sql);
         stm = connection.prepareStatement(sql);
         ResultSet resultSet = stm.executeQuery();
-        return new User(resultSet.getString(1),resultSet.getString(2));
+
+        resultSet.beforeFirst();
+
+        return resultSet.next() ? new User(resultSet.getString(1),resultSet.getString(2))
+                : null;
     }
 }
