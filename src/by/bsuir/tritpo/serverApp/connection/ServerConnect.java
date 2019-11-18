@@ -22,10 +22,12 @@ public class ServerConnect extends Thread{
             while (true){
                 message = in.readLine();
                 System.out.println(message);
-//                if(message == "stop"){
-//                    break;
-//                }
-                logic.processCommand(message);
+//               if (message.equals("exit")){
+//                   //socket.close();
+//                   //in.close();
+//                   break;
+//               }
+               logic.processCommand(message);
             }
         } catch (IOException e) {
             e.printStackTrace();

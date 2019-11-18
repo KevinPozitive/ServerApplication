@@ -69,8 +69,8 @@ public class Logic {
                 out.write(service.getMessages().toString());
                 break;
             case "exit":
-                socket.close();
-                out.close();
+                //socket.close();
+                //out.close();
                 break;
             case "onlineUsers":
                 for(User user: service.getUsers())
