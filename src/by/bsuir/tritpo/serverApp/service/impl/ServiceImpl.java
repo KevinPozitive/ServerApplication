@@ -54,6 +54,7 @@ public class ServiceImpl implements IChatService {
 
     @Override
     public String getMessages(int index) {
+        System.out.println("getMessages\n");
         return msgStory.toStringFromIndex(index);
     }
 

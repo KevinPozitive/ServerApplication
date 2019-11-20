@@ -15,7 +15,7 @@ import java.util.List;
 public class Logic {
     private BufferedWriter out;
     private ServiceImpl service;
-    private MessageStory messageStory;
+    private MessageStory messageStory = new MessageStory();
     private String login = "";
     private Socket socket;
 
@@ -62,7 +62,9 @@ public class Logic {
                 }
                 break;
             case "msgHistory":
-                out.write("msgHistory~" + service.getMessages(Integer.parseInt(msg[1])));
+                System.out.println("OOO"+service.getMessages(Integer.parseInt(msg[1]))+"\n");
+                out.write("msgHistory~" + service.getMessages(Integer.parseInt(msg[1]))+"\n");
+                out.flush();
                 break;
             case "exit":
                 //socket.close();
