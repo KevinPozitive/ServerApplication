@@ -21,17 +21,17 @@ public class ServerConnect extends Thread{
         try {
             while (true){
                 if(!socket.isClosed()){
-                message = in.readLine();
-                System.out.println(message);
+                    message = in.readLine();
 //               if (message.equals("exit")){
 //                   //socket.close();
 //                   //in.close();
 //                   break;
 //               }
-               logic.processCommand(message);
+                logic.processCommand(message);
                 }
                 else{
                     in.close();
+                    socket.close();
                 }
             }
         } catch (IOException e) {

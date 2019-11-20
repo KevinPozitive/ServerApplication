@@ -13,5 +13,5 @@ public interface IChatService {
     boolean isLoginReserved(String name) throws SQLException;
     ArrayList<User> getUsers() throws SQLException;
     String getMessages(int index);
-   // String getLastMsg();
+    String getOnlineUsers();
 }

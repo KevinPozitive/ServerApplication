@@ -17,7 +17,6 @@ public class DBConnection {
         String setDB=String.format("jdbc:mysql://"+ Configs.dbHost +":"+Configs.dbPort +"/"+Configs.dbName+"+?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection= DriverManager.getConnection(setDB,Configs.dbUser,Configs.dbPass);
-        System.out.println(connection);
         return connection;
     }
 }
