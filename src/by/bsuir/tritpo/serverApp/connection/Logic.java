@@ -32,16 +32,12 @@ public class Logic {
         }
         switch (msg[0]){
             case "msg":
-                for(ServerConnect serverConnect:Server.serverList){
-                    send(msg[1]);
-                    Message messageUnit = new Message(login,msg[1]);
-                    messageStory.addStoryMsg(messageUnit);
-                    System.out.println(msg[1]);
-                }
+                messageStory.addStoryMsg(new Message(login,msg[1]));
                 break;
             case "log":
                 System.out.println(msg[1]+"}{"+msg[2]);
-                if(service.checkUser(msg[1],msg[2])==false) {
+                if(!(service.checkUser(msg[1], msg[2]))) {
+                    System.out.println("true?");
                     out.write("true\n");
                     out.flush();
                     login = msg[1];
@@ -66,7 +62,7 @@ public class Logic {
                 }
                 break;
             case "msgHistory":
-                out.write(service.getMessages().toString());
+                out.write("msgHistory~" + service.getMessages(Integer.parseInt(msg[1])));
                 break;
             case "exit":
                 //socket.close();

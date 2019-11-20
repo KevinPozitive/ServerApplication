@@ -56,10 +56,7 @@ public class UserDAOImpl implements UsersDAO {
         System.out.println(sql);
         stm = connection.prepareStatement(sql);
         ResultSet resultSet = stm.executeQuery();
-
         resultSet.beforeFirst();
-
-        return resultSet.next() ? new User(resultSet.getString(1),resultSet.getString(2))
-                : null;
+        return resultSet.next() ? new User(resultSet.getString(1),resultSet.getString(2)): null;
     }
 }

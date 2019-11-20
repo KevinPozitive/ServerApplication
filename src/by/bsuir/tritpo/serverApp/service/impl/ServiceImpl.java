@@ -27,15 +27,19 @@ public class ServiceImpl implements IChatService {
     @Override
     public boolean checkUser(String name, String password) throws SQLException {
         User user = userDAO.getUser(name);
+        System.out.println("user = " + user.getUsername());
+
         if(user==null){
             return false;
         }
+        System.out.println(user.getPassword().equals(password));
         return user.getPassword().equals(password);
     }
 
     @Override
     public boolean isLoginReserved(String name) throws SQLException {
         User user = userDAO.getUser(name);
+        System.out.println("user = " + user);
         if(user==null){
             return false;
         }
@@ -49,8 +53,8 @@ public class ServiceImpl implements IChatService {
     }
 
     @Override
-    public LinkedList<Message> getMessages() {
-        return msgStory.getStory();
+    public String getMessages(int index) {
+        return msgStory.toStringFromIndex(index);
     }
 
 }

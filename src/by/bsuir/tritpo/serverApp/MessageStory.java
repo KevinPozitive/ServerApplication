@@ -8,35 +8,16 @@ public class MessageStory {
     private LinkedList<Message> story = new LinkedList<>();
 
     public void addStoryMsg(Message msg){
-        if(story.size()>=10){
-            story.removeFirst();
-            story.add(msg);
-        }else{
-            story.add(msg);
-        }
+        story.add(msg);
     }
-
-    public LinkedList<Message> getStory(){
-        if(story.size()>0){
-            return story;
+    public String toStringFromIndex(int index){
+        String str = "";
+        if(story.size()==0){
+            return "";
         }
-        return null;
-    }
-
-    public Message getLastMsg(){
-        if(story.size()>0){
-            return story.getLast();
+        for(int i = index;i<story.size();i++){
+            str += story.get(i).toString() + "~";
         }
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        String msg = "";
-        for(Message unit: story){
-            msg +=unit + "~";
-        }
-        msg.subSequence(0,msg.length()-1);
-        return msg;
+        return str;
     }
 }
