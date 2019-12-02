@@ -19,8 +19,8 @@ public class OnlineUsers {
         for(String user:names){
            str+=user+"~";
         }
+        if(names.size()>0)
         str.substring(0,names.size()-1);
-
         return str;
     }
 }

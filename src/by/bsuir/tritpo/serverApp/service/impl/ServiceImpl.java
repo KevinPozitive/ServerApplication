@@ -29,11 +29,11 @@ public class ServiceImpl implements IChatService {
     @Override
     public boolean checkUser(String name, String password) throws SQLException {
         User user = userDAO.getUser(name);
-
         if(user==null){
+            System.out.println("null user");
             return false;
         }
-        System.out.println(user.getPassword().equals(password));
+        user.getPassword().equals(password);
         return user.getPassword().equals(password);
     }
 

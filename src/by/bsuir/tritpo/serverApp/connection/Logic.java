@@ -34,7 +34,7 @@ public class Logic {
                 messageStory.addStoryMsg(new Message(login,msg[1]));
                 break;
             case "log":
-                if(!(service.checkUser(msg[1], msg[2]))) {
+                if((service.checkUser(msg[1], msg[2]))) {
                     out.write("true\n");
                     out.flush();
                     login = msg[1];
@@ -69,7 +69,7 @@ public class Logic {
                 //out.close();
                 break;
             case "onlineUsers":
-                out.write("onlUsers~" + service.getOnlineUsers()+"\n");
+                out.write("onlineUsers~" + service.getOnlineUsers()+"\n");
                 out.flush();
                 break;
         }

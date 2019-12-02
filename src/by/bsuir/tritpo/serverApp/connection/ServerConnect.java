@@ -20,6 +20,7 @@ public class ServerConnect extends Thread{
         String message;
         try {
             while (true){
+
                 if(!socket.isClosed()){
                     message = in.readLine();
 //               if (message.equals("exit")){
@@ -40,7 +41,7 @@ public class ServerConnect extends Thread{
             ex.printStackTrace();
         } finally {
             try {
-                //socket.close();
+                socket.close();
                 in.close();
             } catch (IOException e) {
                 e.printStackTrace();

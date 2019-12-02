@@ -14,8 +14,8 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(Configs.PORT);
         try {
+            System.out.println("Server started");
             while (true){
-                System.out.println("Server Started");
                 Socket socket = serverSocket.accept();
                 try {
                     serverList.add(new ServerConnect(socket));

@@ -43,7 +43,7 @@ public class UserDAOImpl implements UsersDAO {
         while (rst.next()){
             users.add(
                     new User(
-                            rst.getString(1), rst.getString(2)
+                            rst.getString(2), rst.getString(3)
                     )
             );
         }
@@ -53,10 +53,9 @@ public class UserDAOImpl implements UsersDAO {
     @Override
     public User getUser(String name) throws SQLException {
         String sql="SELECT * FROM users WHERE nickname = '"+ name+"'";
-        System.out.println(sql);
         stm = connection.prepareStatement(sql);
         ResultSet resultSet = stm.executeQuery();
         resultSet.beforeFirst();
-        return resultSet.next() ? new User(resultSet.getString(1),resultSet.getString(2)): null;
+        return resultSet.next() ? new User(resultSet.getString(2),resultSet.getString(3)): null;
     }
 }
